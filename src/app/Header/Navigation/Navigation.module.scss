@@ -1,0 +1,98 @@
+@use "src/common/styles/variables" as *;
+@use "src/common/styles/resetMixins" as *;
+
+.container {
+  @include bp-all {
+    display: flex;
+  }
+
+  @include bp-between(0, $mobile) {
+    gap: $spacingXS;
+  }
+
+  @include bp-between($mobile, $tablet) {
+    gap: $spacingS;
+  }
+
+  @include bp-from($tablet) {
+    gap: $spacingM;
+  }
+
+  .link {
+    @include bp-all {
+      @include reset-link;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+
+      &__active {
+        color: $activeLink;
+      }
+
+      .logo {
+        overflow: hidden;
+        flex: 0 0 auto;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    @include bp-between(0, $mobile) {
+      font-size: 0.7rem;
+      gap: $spacingXS;
+
+      .logo {
+        width: 25px;
+        height: 25px;
+      }
+
+      .text {
+        max-width: 170px;
+      }
+
+      span, div {
+        font-size: 0.9rem;
+      }
+    }
+
+    @include bp-between($mobile, $tablet) {
+      font-size: 0.75rem;
+      gap: $spacingS;
+
+      .logo {
+        width: 35px;
+        height: 35px;
+      }
+
+      .text {
+        max-width: 180px;
+      }
+
+      span, div {
+        font-size: 1rem;
+      }
+    }
+
+    @include bp-from($tablet) {
+      gap: $spacingM;
+
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .text {
+        max-width: 240px;
+      }
+
+      span, div {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
